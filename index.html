@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Luminous Elecetric Invoice System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400|Roboto+Mono"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="print-hide">
+      <button id="authorize_button" style="display: none;">
+        Sign in to load data
+      </button>
+      <button id="signout_button" style="display: none;">Sign Out</button>
+      <pre id="content"></pre>
+    </div>
+    <main>
+      <div class="wrap">
+        <div class="header">
+          <header>
+            <img src="images/logo.jpg" alt="Luminous-electrical logo" />
+            <h2>Luminous Electrical Pte Ltd</h2>
+            <address>
+              <div>Blk 281A Sengkang East Ave #03-615 Singapore 541281</div>
+              <span>Off: 67177790</span> <span>Hp: 92214276</span>
+              <p>Email: luminouselectrical@gmail.com</p>
+            </address>
+          </header>
+
+          <div class="jobsheet">
+            <p class="jobsheet__company has-lines">
+              <span>M/s.</span>
+              <span class="debug" contenteditable>Company Name</span>
+            </p>
+            <p class="jobsheet__number">
+              <span contenteditable>Job sheet No.</span>:
+              <span contenteditable class="red">00039</span>
+            </p>
+            <datetime class="jobsheet__date has-lines">
+              <span>Date:</span> <span contenteditable class="jsDate"></span>
+            </datetime>
+          </div>
+        </div>
+
+        <table class="table">
+          <thead>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Amount</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <table class="tfoot">
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total $</strong></td>
+              <td class="jsTotal"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Deposit $</strong></td>
+              <td contenteditable class="jsDeposit"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Balance $</strong></td>
+              <td class="jsBalance"></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="checks">
+          <p>
+            All cheques should be crossed nd made payable to LUMINOUS ELECTRICAL
+            PTE LTD
+          </p>
+          <div class="checks__confirmation">
+            We received the above goods in good order and condition
+          </div>
+          <div class="checks__signature">
+            <p>RECEIVED BY</p>
+            <p>ISSUED BY</p>
+          </div>
+        </div>
+
+        <datalist id="items" class="print-hide"></datalist>
+        <footer class="print-hide">
+          <div>
+            <button class="jsAddrow">Add rows</button>
+            <button class="jsCleanup">Cleanup</button>
+            <button class="jsPrint">Print</button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script src="js/date_fns.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script type="module" src="js/table.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
