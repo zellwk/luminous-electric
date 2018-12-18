@@ -2,8 +2,8 @@
 import { createTable, formatTablesForPrint } from './table.js'
 
 // Execution
-// const dateField = document.querySelector('.jsDate')
-// dateField.textContent = dateFns.format(new Date(), 'D/M/YYYY')
+const dateField = document.querySelector('.jsDate')
+dateField.textContent = dateFns.format(new Date(), 'D/M/YYYY')
 createTable()
 
 // Add waiting for Google somewhere.

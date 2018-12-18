@@ -18,6 +18,13 @@
         Sign in to load data
       </button>
       <button id="signout_button" style="display: none;">Sign Out</button>
+      <a
+        href="https://docs.google.com/spreadsheets/d/1qg4OqKdVkt1R2PUhJSzWxWYby_TSk04HlBVAF-t9NJU/edit#gid=0"
+        target="_blank"
+        rel="noopener"
+        class="button"
+        >Data source</a
+      >
       <pre id="content"></pre>
     </div>
     <main>
@@ -35,16 +42,25 @@
 
           <div class="jobsheet">
             <p class="jobsheet__company has-lines">
-              <span>M/s.</span>
               <span class="debug" contenteditable>Company Name</span>
             </p>
+            <div class="jobsheet__company-divider">
+              <div class="divider"></div>
+              <div class="divider"></div>
+              <div class="divider"></div>
+            </div>
             <p class="jobsheet__number">
-              <span contenteditable>Job sheet No.</span>:
-              <span contenteditable class="red">00039</span>
+              <span contenteditable>Invoice No.</span>:
+              <span contenteditable class="red">00000</span>
             </p>
             <datetime class="jobsheet__date has-lines">
-              <span>Date:</span> <span contenteditable class="jsDate"></span>
+              <span>Date:</span>
+              <span contenteditable class="jsDate">Date</span>
             </datetime>
+
+            <div class="jobsheet__date-divider">
+              <div class="divider"></div>
+            </div>
           </div>
         </div>
 
