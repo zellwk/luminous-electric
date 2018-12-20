@@ -4,7 +4,7 @@ const SUBSEQUENT_PAGE_ROWS = 24
 const makeRow = index => {
   const tr = document.createElement('tr')
   tr.innerHTML = `
-    <td data-item></td>
+    <td data-item contenteditable></td>
     <td><input type="text" data-quantity/></td>
     <td><input list="items" data-description/></td>
     <td><input type="text"  data-price/></td>
