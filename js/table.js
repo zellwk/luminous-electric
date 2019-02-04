@@ -1,50 +1,50 @@
 const FIRST_PAGE_ROWS = 24
 const SUBSEQUENT_PAGE_ROWS = 24
 
-const makeRow = index => {
-  const tr = document.createElement('tr')
-  tr.innerHTML = `
-    <td data-item contenteditable></td>
-    <td><input type="text" data-quantity/></td>
-    <td><input list="items" data-description/></td>
-    <td><input type="text"  data-price/></td>
-    <td data-subtotal></td>
-  `
+// const makeRow = index => {
+//   const tr = document.createElement('tr')
+//   tr.innerHTML = `
+//     <td data-item contenteditable></td>
+//     <td><input type="text" data-quantity/></td>
+//     <td><input list="items" data-description/></td>
+//     <td><input type="text"  data-price/></td>
+//     <td data-subtotal></td>
+//   `
 
-  return tr
-}
+//   return tr
+// }
 
-const addRows = evt => {
-  const tbody = document.querySelector('tbody')
-  const index = tbody.children.length
-  const rowsToCreate = index >= FIRST_PAGE_ROWS ? SUBSEQUENT_PAGE_ROWS : FIRST_PAGE_ROWS
-  console.log(index > FIRST_PAGE_ROWS)
-  const frag = document.createDocumentFragment()
+// const addRows = evt => {
+//   const tbody = document.querySelector('tbody')
+//   const index = tbody.children.length
+//   const rowsToCreate = index >= FIRST_PAGE_ROWS ? SUBSEQUENT_PAGE_ROWS : FIRST_PAGE_ROWS
+//   console.log(index > FIRST_PAGE_ROWS)
+//   const frag = document.createDocumentFragment()
 
-  new Array(rowsToCreate).fill(0)
-    .forEach((item, arrayIndex) => {
-      const tr = makeRow(arrayIndex + index)
-      frag.appendChild(tr)
-    })
+//   new Array(rowsToCreate).fill(0)
+//     .forEach((item, arrayIndex) => {
+//       const tr = makeRow(arrayIndex + index)
+//       frag.appendChild(tr)
+//     })
 
-  tbody.appendChild(frag)
-}
+//   tbody.appendChild(frag)
+// }
 
-export const createTable = _ => {
-  const table = document.querySelector('table')
-  const tbody = table.querySelector('tbody')
-  const frag = document.createDocumentFragment()
+// export const createTable = _ => {
+//   const table = document.querySelector('table')
+//   const tbody = table.querySelector('tbody')
+//   const frag = document.createDocumentFragment()
 
-  new Array(FIRST_PAGE_ROWS).fill(0)
-    .forEach((item, index) => {
-      const tr = makeRow(index)
-      frag.appendChild(tr)
-    })
-  tbody.appendChild(frag)
+//   new Array(FIRST_PAGE_ROWS).fill(0)
+//     .forEach((item, index) => {
+//       const tr = makeRow(index)
+//       frag.appendChild(tr)
+//     })
+//   tbody.appendChild(frag)
 
-  const buttons = [...document.querySelectorAll('.jsAddrow')]
-  buttons.forEach(button => button.addEventListener('click', addRows))
-}
+//   const buttons = [...document.querySelectorAll('.jsAddrow')]
+//   buttons.forEach(button => button.addEventListener('click', addRows))
+// }
 
 // Table creation:
 //   1. Create multiple <table> elements to format for print
