@@ -121,7 +121,7 @@ const updateTotals = _ => {
   const balanceTd = document.querySelector('.jsBalance')
 
   const totalAmount = invoiceItems.reduce((sum, curr) => {
-    if (typeof curr.amount === 'undefined') curr.amount = 0
+    if (typeof curr.amount === 'undefined' || curr.amount === '') curr.amount = 0
     return sum + parseFloat(curr.amount)
   }, 0) || 0
 
