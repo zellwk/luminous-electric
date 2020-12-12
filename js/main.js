@@ -2,21 +2,11 @@
 import { formatTablesForPrint } from './table.js'
 import { handleClientLoad } from './gapi.js'
 
-// Populate Date
-const dateField = document.querySelector('.jsDate')
-dateField.textContent = dateFns.format(new Date(), 'D/M/YYYY')
-
-handleClientLoad()
-
-document.body.addEventListener('data-ready', e => {
-  console.log('ready')
-  // console.log(e.detail.data)
-})
-
 // Creating Invoice data state
 const ROWS_IN_ONE_PAGE = 24
 
 let invoiceItems = Array.from({ length: ROWS_IN_ONE_PAGE }, i => ({}))
+
 const datalist = document.querySelector('datalist')
 
 const renderInvoice = _ => {
@@ -40,7 +30,6 @@ const updateInvoiceDOM = field => {
   const row = field.closest('tr')
   const index = [...row.parentElement.children].findIndex(tr => tr === row)
   const data = invoiceItems[index]
-
   const tds = [...row.children]
 
   tds.forEach((td, index) => {
@@ -83,7 +72,7 @@ const updateInvoiceItems = field => {
   item[type] = getFieldValue(field, type)
 
   // Description Field assigns a price, but only if price not custom-written already...
-  if (type === 'description' && typeof item.price === 'undefined') {
+  if (type === 'description' && !item.price) {
     const match = [...datalist.children].find(opt => opt.value === item.description)
     if (match) {
       item.price = match.dataset.price
@@ -133,13 +122,21 @@ const updateTotals = _ => {
   balanceTd.textContent = balanceAmount.toFixed(0)
 }
 
+// ========================
 // Execution
+// ========================
+// Populate Date
+const dateField = document.querySelector('.jsDate')
+dateField.textContent = dateFns.format(new Date(), 'D/M/YYYY')
+
+// Load Data
+handleClientLoad()
+
 const table = document.querySelector('table')
 const tbody = table.querySelector('tbody')
 renderInvoice()
 
 tbody.addEventListener('input', evt => {
-  console.log('inputting')
   updateInvoiceItems(evt.target)
   updateInvoiceDOM(evt.target)
   updateTotals()
@@ -151,7 +148,7 @@ depositTd.addEventListener('input', evt => updateTotals())
 // Add rows
 const addRowButton = document.querySelector('.jsAddrow')
 addRowButton.addEventListener('click', evt => {
-  let newItems = Array.from({ length: ROWS_IN_ONE_PAGE }, i => ({}))
+  const newItems = Array.from({ length: ROWS_IN_ONE_PAGE }, i => ({}))
   invoiceItems = invoiceItems.concat(newItems)
   renderInvoice()
 })
